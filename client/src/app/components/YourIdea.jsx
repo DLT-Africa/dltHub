@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import axios from "axios";
-import Image from "next/image";
+
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import illustration from "../../../public/travel _ travelling, airplane, aeroplane, plane, flight, choose, choice, man, people.png";
@@ -68,7 +68,11 @@ const YourIdea = () => {
     setIsSubmitting(true);
 
     axios
-      .post("http://localhost:5000/api/v1/idea/suggestIdea", {fullName: formData.fullName, emailAddress: formData.email, why: formData.reason})
+      .post("http://localhost:5000/api/v1/idea/suggestIdea", {
+        fullName: formData.fullName,
+        emailAddress: formData.email,
+        why: formData.reason,
+      })
       .then((response) => {
         console.log(response.data);
         setIsSubmitting(false);
@@ -249,10 +253,10 @@ const YourIdea = () => {
             damping: 10,
           }}
         >
-          <Image 
-            src={illustration || "/placeholder.svg"}
-            width={600}
-            height={600}
+          <img 
+            src={illustration.src || "/placeholder.svg"}
+            width="600"
+            height="600"
             alt="Illustration"
           />
         </motion.div>

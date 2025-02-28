@@ -3,20 +3,15 @@
 import { useState, useEffect, useRef } from "react";
 import { IoArrowBack } from "react-icons/io5";
 import { motion } from "framer-motion";
-import Image from "next/image";
+// Removed Next.js Image import
 
 const PersonalInfo = ({ initialData, updateData, onBack, onSubmit, isSubmitting }) => {
-  // State for the full countries list
   const [countries, setCountries] = useState([]);
-  // State to control visibility of the phone dial dropdown
   const [phoneDropdownOpen, setPhoneDropdownOpen] = useState(false);
-  // State for the selected country used for phone dialing
   const [selectedPhoneCountry, setSelectedPhoneCountry] = useState(null);
-  // State for filtering the phone dial dropdown
   const [dialSearch, setDialSearch] = useState("");
   const dropdownRef = useRef();
 
-  // Fetch countries and default to USA if available
   useEffect(() => {
     const fetchCountries = async () => {
       try {
@@ -27,7 +22,7 @@ const PersonalInfo = ({ initialData, updateData, onBack, onSubmit, isSubmitting 
           a.name.common.localeCompare(b.name.common)
         );
         setCountries(sorted);
-        // Default to USA (cca2 === "US")
+        
         const defaultCountry = sorted.find((country) => country.cca2 === "US");
         if (defaultCountry) {
           setSelectedPhoneCountry(defaultCountry);
@@ -203,11 +198,11 @@ const PersonalInfo = ({ initialData, updateData, onBack, onSubmit, isSubmitting 
                   className="flex items-center justify-center w-[55px] h-[55px] border border-[#464646] rounded-l-[10px] bg-black"
                 >
                   {selectedPhoneCountry ? (
-                    <Image
+                    <img
                       src={selectedPhoneCountry.flags.png}
                       alt={selectedPhoneCountry.name.common}
-                      width={30}
-                      height={20}
+                      width="30"
+                      height="20"
                       className="object-contain"
                     />
                   ) : (
@@ -236,11 +231,11 @@ const PersonalInfo = ({ initialData, updateData, onBack, onSubmit, isSubmitting 
                           onClick={() => handlePhoneCountrySelect(country)}
                           className="flex items-center gap-2 p-2 hover:bg-gray-700 w-full text-left text-white"
                         >
-                          <Image
+                          <img
                             src={country.flags.png}
                             alt={country.name.common}
-                            width={30}
-                            height={20}
+                            width="30"
+                            height="20"
                             className="object-contain"
                           />
                           <span className="text-sm">{telCode}</span>
@@ -260,11 +255,6 @@ const PersonalInfo = ({ initialData, updateData, onBack, onSubmit, isSubmitting 
                 className="flex-1 font-normal text-[#7B8B76] text-[16px] input-radial p-[10px] rounded-r-[10px] h-[55px] border border-[#464646] outline-none"
               />
             </div>
-            {/*
-              Note: At submission, combine the dial code and the phone number.
-              For example, the final value will look like:
-              "(+234) 816 9211 501"
-            */}
           </div>
 
           {/* LinkedIn */}

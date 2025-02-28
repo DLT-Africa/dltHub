@@ -2,7 +2,6 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import spinning from "../../../public/spinnigbg.png";
 
 const Page = () => {
@@ -10,7 +9,7 @@ const Page = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      router.push("/"); 
+      router.push("/");
     }, 10000);
 
     return () => clearTimeout(timer);
@@ -23,11 +22,10 @@ const Page = () => {
       </div>
 
       <div className="absolute w-[1500.21px] h-[1500.21px] flex items-center justify-center">
-        <Image
-          src={spinning}
-          fill
-          className="animate-spin object-contain [animation-duration:10s]"
+        <img
+          src={spinning.src}
           alt="Spinning Background"
+          className="animate-spin object-contain [animation-duration:10s] w-full h-full"
         />
       </div>
 

@@ -8,6 +8,8 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const ideaRoutes = require("./routes/ideasRoute");
 const newsLetterRoutes = require("./routes/newsLetterRoute");
+const testimonyRoutes = require("./routes/testimonyRoutes");
+
 const projectRoutes = require("./routes/projectRoutes");
 const mongoose = require("mongoose");
 
@@ -50,6 +52,7 @@ app.use(bodyParser.json());
 app.use("/api/v1/idea", ideaRoutes);
 app.use("/api/v1/projects", projectRoutes);
 app.use("/api/v1/newsLetter", newsLetterRoutes);
+app.use("/api/v1/testimonials", testimonyRoutes);
 
 app.get("/", (req, res) => {
   res.send("Home Page");

@@ -3,15 +3,14 @@
 import { useState } from "react";
 import axios from "axios";
 import Lottie from "lottie-react";
-import dltImage from "../../../public/dltfooter.png";
-import Image from "next/image";
+
 import { BsTwitterX } from "react-icons/bs";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import footerAnimation from "../jsonData/Footer darker.json";
 
 const Footer = () => {
-  // Subscription form state
+  
   const [subscribeData, setSubscribeData] = useState({ email: "" });
   const [subscribeMessage, setSubscribeMessage] = useState("");
   const [isSubscribing, setIsSubscribing] = useState(false);
@@ -39,7 +38,7 @@ const Footer = () => {
     setIsSubscribing(true);
 
     axios
-      .post("http://localhost:5000/api/v1/newsLetter/subscribe", {emailAddress: email })
+      .post("http://localhost:5000/api/v1/newsLetter/subscribe", { emailAddress: email })
       .then((response) => {
         console.log(response.data);
         setIsSubscribing(false);
@@ -61,7 +60,7 @@ const Footer = () => {
       <div className="flex items-start gap-[187px]">
         <div className="flex flex-col items-center gap-[20px] w-[223.03px]">
           <div className="flex flex-col gap-[10px] items-center">
-            <Image src={dltImage} alt="DLT logo" />
+            <img src="/dltfooter.png" alt="DLT logo" />
             <p className="text-[#FEA650] text-[16px] font-medium">
               innovating through Web 3...
             </p>
@@ -115,7 +114,7 @@ const Footer = () => {
           <form onSubmit={handleSubscribeSubmit}>
             <input
               type="text"
-              className="w-[255px] p-[10px] bg-transparent text-[#FEA650] placeholder:text-[#FEA650] outline-none border-none placeholder:opacity-70 border  rounded-[10px]"
+              className="w-[255px] p-[10px] bg-transparent text-[#FEA650] placeholder:text-[#FEA650] outline-none border-none placeholder:opacity-70 border rounded-[10px]"
               placeholder="enter your email"
               value={subscribeData.email}
               onChange={handleSubscribeChange}

@@ -1,7 +1,7 @@
 "use client"
 
 import fireCrackSpark from "../../../public/sparks.png"
-import Image from "next/image"
+// Removed Next.js Image import since we're using <img> tags instead
 import { useRef } from "react"
 import { motion, useInView, useScroll, useTransform } from "framer-motion"
 import Lottie from "lottie-react"
@@ -74,13 +74,11 @@ const Hero = () => {
                   ease: "easeInOut",
                 }}
               >
-
-                <Image 
-                  src={fireCrackSpark || "/placeholder.svg"} 
+                <img 
+                  src={fireCrackSpark.src || "/placeholder.svg"} 
                   alt="Top Spark" 
                   className="filter brightness-110" 
                 />
-            
               </motion.div>
             </motion.div>
 
@@ -114,8 +112,8 @@ const Hero = () => {
                   ease: "easeInOut",
                 }}
               >
-                <Image
-                  src={fireCrackSpark || "/placeholder.svg"}
+                <img
+                  src={fireCrackSpark.src || "/placeholder.svg"}
                   alt="Bottom Spark"
                   className="filter brightness-110"
                 />

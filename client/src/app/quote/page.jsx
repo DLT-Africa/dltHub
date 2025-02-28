@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
-import Image from "next/image";
 import spining from "../../../public/spinnigbg.png";
 import Testimonial from "../components/Testimonial";
 import GetAQuoteForm from "../components/GetAQuoteForm";
@@ -51,16 +50,14 @@ const Page = () => {
     }));
   };
 
-   
   const fullPhoneNumber = `(${formData.personal.dialCode}) ${formData.personal.phoneNo}`;
 
-  console.log(fullPhoneNumber)
+  console.log(fullPhoneNumber);
 
   const handleFinalSubmit = (e) => {
     e.preventDefault();
     setFormValidMessage("");
-  
-   
+
     if (
       !formData.tags ||
       !formData.description ||
@@ -70,17 +67,15 @@ const Page = () => {
       setFormValidMessage("Please fill in all required fields.");
       return;
     }
-  
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.personal.email)) {
       setFormValidMessage("Please enter a valid email address.");
       return;
     }
-  
+
     setIsSubmitting(true);
-  
-  
-  
+
     axios
       .post("http://localhost:5000/api/v1/projects/regProject", {
         tags: formData.tags,
@@ -110,7 +105,6 @@ const Page = () => {
         }
       });
   };
-  
 
   return (
     <Layout>
@@ -121,7 +115,13 @@ const Page = () => {
 
         <AnimatePresence mode="wait">
           {currentForm === "quote" && (
-            <motion.div key="quote" variants={formVariants} initial="initial" animate="animate" exit="exit">
+            <motion.div
+              key="quote"
+              variants={formVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+            >
               <GetAQuoteForm
                 initialData={{
                   tags: formData.tags,
@@ -135,7 +135,13 @@ const Page = () => {
           )}
 
           {currentForm === "personal" && (
-            <motion.div key="personal" variants={formVariants} initial="initial" animate="animate" exit="exit">
+            <motion.div
+              key="personal"
+              variants={formVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+            >
               <PersonalInfo
                 initialData={formData.personal}
                 updateData={updatePersonalData}
@@ -152,8 +158,8 @@ const Page = () => {
         )}
 
         <div className="w-full relative overflow-hidden">
-          <Image
-            src={spining}
+          <img
+            src={spining.src}
             alt="Spinning background"
             className="absolute animate-spin [animation-duration:10s] top-[40px]"
           />
