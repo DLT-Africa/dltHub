@@ -1,5 +1,5 @@
 const { sendEmail } = require("../utils/index");
-const Idea = require("../models/ideaModel");
+
 const NewsLetter = require("../models/newsLetterModel");
 
 

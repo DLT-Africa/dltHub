@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useRef } from "react";
-import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import cartesi from "../../../public/Cartesi Lockup Black 1.png";
 import kotani from "../../../public/Kotani-white 1.png";
@@ -74,15 +73,15 @@ const Partners = () => {
               whileHover={{ scale: 1.05, filter: "brightness(1.2)" }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <Image
-                src={partner.image}
-                width={200}
-                height={100}
+              <img
+                src={partner.image.src}
+                width="200"
+                height="100"
                 alt="alternative text"
                 className={
                   partner.name === "Canza" || partner.name === "Kotani"
                     ? "h-[120px] w-auto"
-                    : "h-[50px] w-auto "
+                    : "h-[50px] w-auto"
                 }
               />
             </motion.div>

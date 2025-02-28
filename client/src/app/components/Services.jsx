@@ -4,7 +4,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { useInView } from "framer-motion";
 import Lottie from "lottie-react";
-import Image from "next/image";
+// Removed Next.js Image import
 
 import dlt from "../../../public/dlt-color.png";
 import softwareDesign from "../jsonData/Software Development.json";
@@ -13,7 +13,6 @@ import blockchainDev from "../jsonData/Blockchain.json";
 import webDev from "../jsonData/Web Development.json";
 import contentWrite from "../jsonData/Content Writing.json";
 import spining from "../../../public/spinnigbg.png";
-
 
 const headerVariants = {
   hidden: { opacity: 0, y: -50 },
@@ -31,7 +30,7 @@ const cardVariants = {
   hidden: (index) => ({
     opacity: 0,
     x: ((index % 3) - 1) * 100,
-    y: index < 3 ? -100 : 100, 
+    y: index < 3 ? -100 : 100,
     scale: 0.8,
     transition: {
       duration: 0.8,
@@ -123,11 +122,9 @@ const Services = () => {
 
   return (
     <section
-      
       ref={ref}
       className="font-poppins w-full flex flex-col pt-[62px] px-[50px] gap-[51px] min-h-screen pb-[100px] scrollbar-hide"
     >
-    
       <motion.div
         className="w-full flex flex-col items-center text-center gap-[25px]"
         initial="hidden"
@@ -140,8 +137,8 @@ const Services = () => {
         </p>
       </motion.div>
 
-      <div className="flex flex-col items-center w-full scrollbar-hide ">
-        <div className="w-full flex flex-col items-center gap-[125px] scrollbar-hide ">
+      <div className="flex flex-col items-center w-full scrollbar-hide">
+        <div className="w-full flex flex-col items-center gap-[125px] scrollbar-hide">
           <div className="flex relative items-center gap-[300px]">
             {serviceCards.slice(0, 3).map((card, index) => (
               <motion.div
@@ -170,8 +167,7 @@ const Services = () => {
             ))}
           </div>
 
-       
-          <div className="flex relative items-center gap-[300px] scrollbar-hide ">
+          <div className="flex relative items-center gap-[300px] scrollbar-hide">
             <motion.div
               className="flex flex-col items-start"
               style={{ width: "349px" }}
@@ -193,22 +189,19 @@ const Services = () => {
               </p>
             </motion.div>
 
-       
             <motion.div
-              className="relative flex items-center justify-center scrollbar-hide  "
+              className="relative flex items-center justify-center scrollbar-hide"
               initial="hidden"
               animate={controls}
               variants={dltVariants}
             >
-           
-  <div className="absolute w-[1324.21px] h-[1324.21px] flex items-center justify-center">
-    <Image
-      src={spining}
-      fill
-      className="animate-spin object-contain [animation-duration:10s]"
-      alt="Spinning Background"
-    />
-  </div>
+              <div className="absolute w-[1324.21px] h-[1324.21px] flex items-center justify-center">
+                <img
+                  src={spining.src}
+                  alt="Spinning Background"
+                  className="animate-spin object-contain [animation-duration:10s] w-full h-full"
+                />
+              </div>
 
               <div className="absolute w-[500px] h-[500px] bg-custom-radial opacity-50 blur-2xl rounded-full -z-10" />
 
@@ -216,11 +209,10 @@ const Services = () => {
                 whileHover={{ rotate: 10 }}
                 transition={{ duration: 0.8, ease: "easeInOut" }}
               >
-                <Image src={dlt} />
+                <img src={dlt.src} alt="DLT logo" />
               </motion.div>
             </motion.div>
 
-          
             <motion.div
               className="flex flex-col items-start"
               style={{ width: "349px" }}
