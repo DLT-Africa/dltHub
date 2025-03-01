@@ -68,7 +68,7 @@ const YourIdea = () => {
     setIsSubmitting(true);
 
     axios
-      .post("https://dev-studio-phi.vercel.com/api/v1/idea/suggestIdea", {
+      .post("https://dev-studio-phi.vercel.app/api/v1/idea/suggestIdea", {
         fullName: formData.fullName,
         emailAddress: formData.email,
         why: formData.reason,
