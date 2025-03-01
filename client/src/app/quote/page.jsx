@@ -77,7 +77,7 @@ const Page = () => {
     setIsSubmitting(true);
 
     axios
-      .post("http://localhost:5000/api/v1/projects/regProject", {
+      .post("https://dev-studio-phi.vercel.com/api/v1/projects/regProject", {
         tags: formData.tags,
         projectDoc: formData.docs,
         description: formData.description,
