@@ -77,7 +77,7 @@ const Page = () => {
     setIsSubmitting(true);
 
     axios
-      .post("http://localhost:5000/api/v1/projects/regProject", {
+      .post("https://dev-studio-phi.vercel.app/api/v1/projects/regProject", {
         tags: formData.tags,
         projectDoc: formData.docs,
         description: formData.description,
@@ -154,7 +154,9 @@ const Page = () => {
         </AnimatePresence>
 
         {formValidMessage && (
-          <div className="text-red-600 mt-4 text-center">{formValidMessage}</div>
+          <div className="text-red-600 mt-4 text-center">
+            {formValidMessage}
+          </div>
         )}
 
         <div className="w-full relative overflow-hidden">
