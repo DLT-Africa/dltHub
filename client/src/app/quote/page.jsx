@@ -6,8 +6,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
 import spining from "../../../public/spinnigbg.png";
 import Testimonial from "../components/Testimonial";
-import GetAQuoteForm from "../components/GetAQuoteForm";
-import PersonalInfo from "../components/PersonalInfo";
+import dynamic from "next/dynamic";
+const GetAQuoteForm = dynamic(() => import("../components/GetAQuoteForm"), {
+  ssr: false,
+});
+const PersonalInfo = dynamic(() => import("../components/PersonalInfo"), {
+  ssr: false,
+});
+
 import Layout from "../components/Layout";
 
 const formVariants = {
