@@ -6,8 +6,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
 import spining from "../../../public/spinnigbg.png";
 import Testimonial from "../components/Testimonial";
-import GetAQuoteForm from "../components/GetAQuoteForm";
-import PersonalInfo from "../components/PersonalInfo";
+import dynamic from "next/dynamic";
+const GetAQuoteForm = dynamic(() => import("../components/GetAQuoteForm"), {
+  ssr: false,
+});
+const PersonalInfo = dynamic(() => import("../components/PersonalInfo"), {
+  ssr: false,
+});
+
 import Layout from "../components/Layout";
 
 const formVariants = {
@@ -37,7 +43,7 @@ const Page = () => {
     },
   });
 
-  console.log(formData);
+  // console.log(formData);
 
   const updateQuoteData = (data) => {
     setFormData((prev) => ({ ...prev, ...data }));
@@ -52,7 +58,7 @@ const Page = () => {
 
   const fullPhoneNumber = `(${formData.personal.dialCode}) ${formData.personal.phoneNo}`;
 
-  console.log(fullPhoneNumber);
+  // console.log(fullPhoneNumber);
 
   const handleFinalSubmit = (e) => {
     e.preventDefault();
@@ -77,7 +83,7 @@ const Page = () => {
     setIsSubmitting(true);
 
     axios
-      .post("https://dev-studio-phi.vercel.com/api/v1/projects/regProject", {
+      .post("https://dev-studio-phi.vercel.app/api/v1/projects/regProject", {
         tags: formData.tags,
         projectDoc: formData.docs,
         description: formData.description,
@@ -92,7 +98,7 @@ const Page = () => {
         },
       })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setIsSubmitting(false);
         router.push("/projectThanks");
       })
@@ -154,7 +160,9 @@ const Page = () => {
         </AnimatePresence>
 
         {formValidMessage && (
-          <div className="text-red-600 mt-4 text-center">{formValidMessage}</div>
+          <div className="text-red-600 mt-4 text-center">
+            {formValidMessage}
+          </div>
         )}
 
         <div className="w-full relative overflow-hidden">
