@@ -38,7 +38,7 @@ const Footer = () => {
     setIsSubscribing(true);
 
     axios
-      .post("http://localhost:5000/api/v1/newsLetter/subscribe", { emailAddress: email })
+      .post("https://dev-studio-phi.vercel.com/api/v1/newsLetter/subscribe", { emailAddress: email })
       .then((response) => {
         console.log(response.data);
         setIsSubscribing(false);
