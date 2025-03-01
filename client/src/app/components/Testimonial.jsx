@@ -41,7 +41,7 @@ const Testimonial = () => {
 
   useEffect(() => {
     axios
-      .get("https://dev-studio-phi.vercel.app/api/v1/testimonials/getTestimonies")
+      .get("https://dev-studio-phi.vercel.com/api/v1/testimonials/getTestimonies")
       .then((response) => {
         const fetchedTestimonials = response.data && response.data.data;
         console.log(fetchedTestimonials)
